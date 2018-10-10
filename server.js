@@ -17,10 +17,23 @@ app.use(express.static("public"));
 
 require("./controllers/professional-controller.js")(app);
 
-db.sequelize.sync({ force: true }).then(function () {
-    app.listen(PORT, function () {
-        console.log("App listening on PORT " + PORT);
-    });
+
+// Passport middlewares:
+app.use(session({ secret: " pineapple-express",
+resave:true, saveUnitialized: true}));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
+
+require ("./controllers/ptController")(app);
+require ("./controllers/profController")(app);
+
+
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
 
    // ("Sarah", "Reynolds", "Psychologist", "Addiction", "Attention Disorders", "Autism", 2025552345, "sarah@sarahreynolds.com", "1101 K St NW", "Washington", "DC", 20005, "Female", 10, "BlueCross", "Cigna", "Aetna", "English", "Spanish", "French", "https://randomuser.me/api/portraits/women/64.jpg"),
