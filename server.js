@@ -1,4 +1,7 @@
 var express = require("express");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var passport = require("passport");
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -17,7 +20,6 @@ app.use(express.static("public"));
 
 require("./controllers/professional-controller.js")(app);
 
-
 // Passport middlewares:
 app.use(session({ secret: " pineapple-express",
 resave:true, saveUnitialized: true}));
@@ -26,9 +28,8 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-require ("./controllers/ptController")(app);
-require ("./controllers/profController")(app);
-
+// require ("./controllers/ptController.js")(app);
+require("./controllers/profController.js")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
