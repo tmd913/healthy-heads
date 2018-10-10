@@ -28,3 +28,14 @@ CREATE TABLE doctors (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE patients (
+    id INT AUTO_INCREMENT NOT NULL,
+    pt_first_name VARCHAR(255) NOT NULL,
+    pt_last_name VARCHAR(255) NOT NULL,
+    pt_gender VARCHAR(255) NOT NULL,
+    pt_age INT(3) NOT NULL,
+    pt_phone INT(10) NOT NULL,
+    pt_email VARCHAR(255) NOT NULL,
+    pt_profile_pic VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
