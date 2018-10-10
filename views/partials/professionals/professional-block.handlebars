@@ -1,0 +1,81 @@
+<li class="result-item">
+    <img class="prof-pic" src="{{prof_photo}}" alt="Profile Picture">
+    <p class="name-title">
+        <span class="name">
+            {{prof_first_name}} {{prof_last_name}}
+        </span>
+        <span>, </span>
+        <span class="title">
+            {{prof_title}}
+        </span>
+    </p>
+    <p class="specialties">Specialties:
+        {{#if prof_specialty1}}
+            <span class="specialty1">
+                {{prof_specialty1}}
+            </span>
+        {{/if}}
+        {{#if prof_specialty2}}
+            <span>, </span>
+            <span class="specialty2">
+                {{prof_specialty2}}
+            </span>
+        {{/if}}
+        {{#if prof_specialty3}}
+            <span>, </span>
+            <span class="specialty3">
+                {{prof_specialty3}}
+            </span>
+        {{/if}}
+    </p>
+    <div class="practice-info">
+        <p class="street">{{prof_street}}</p>
+        <p class="city">{{prof_city}}</p>
+        <p class="state">{{prof_state}}</p>
+        <p class="zip">{{prof_zip}}</p>
+        <p class="email">{{prof_email}}</p>
+        <p class="phone">{{prof_phone}}</p>
+    </div>
+    <div class="advanced">
+        <p class="gender">{{prof_gender}}</p>
+        <p class="years">{{prof_years}}</p>
+        <p class="languages">
+            {{#if prof_language1}}
+                <span class="language1">
+                    {{prof_language1}}
+                </span>
+            {{/if}}
+            {{#if prof_language2}}
+                <span>, </span>
+                <span class="language2">
+                    {{prof_language2}}
+                </span>
+            {{/if}}
+            {{#if prof_language3}}
+                <span>, </span>
+                <span class="language3">
+                    {{prof_language3}}
+                </span>
+            {{/if}}
+        </p>
+        <p class="insurance">
+            {{#if prof_insurance1}}
+                <span class="insurance1">
+                    {{prof_insurance1}}
+                </span>
+            {{/if}}
+            {{#if prof_insurance2}}
+                <span>, </span>
+                <span class="insurance2">
+                    {{prof_insurance2}}
+                </span>
+            {{/if}}
+            {{#if prof_insurance3}}
+                <span>, </span>
+                <span class="insurance3">
+                    {{prof_insurance3}}
+                </span>
+            {{/if}}
+        </p>
+    </div>
+</li>
