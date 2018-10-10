@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/tmd913/project2/issues"
   },
-  "homepage": "https://github.com/tmd913/project2#readme"
+  "homepage": "https://github.com/tmd913/project2#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.6.1",
+    "path": "^0.12.7",
+    "sequelize": "^4.39.0"
+  }
 }
