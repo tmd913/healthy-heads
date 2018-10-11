@@ -22,14 +22,16 @@ $(document).ready(function () {
         $.post("/api/prof/signup", {
             email: email,
             password: password
-        })//.then(function (data) {
-        //     console.log(`after sign up data: ${data}`);
-        //     window.location.replace(data);
-        // }).catch(handleLoginErr);
-    }
+        })
+    //     .then(function (data) {
+    //          console.log(`after sign up data: ${data}`);
+    //     //     window.location.replace(data);
+    //     // }).catch(handleLoginErr);
+    // });
 
     function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }
+}
 });
