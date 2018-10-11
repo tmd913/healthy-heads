@@ -1,5 +1,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
   app.get("/api/prof/signup", function (req, res) {
@@ -55,6 +57,71 @@ module.exports = function (app) {
         });
       })
     });
+
+  app.get("/api/professionals", function (req, res) {
+    db.Professional.findAll({}).then(function (profData) {
+      const hbsObject = {
+        professionals: profData
+      };
+      res.render("index", hbsObject);
+    });
+  });
+
+  app.get("/api/professionals/&city=:city?/&state=:state?/&specialty=:specialty?/&insurance=:insurance?/&gender=:gender?/&years=:years?", function (req, res) {
+    console.log(`Req params: ${req.params}`);
+    let conditions = { where: {} };
+    for (const key in req.params) {
+      if (req.params.hasOwnProperty(key)) {
+        const element = req.params[key];
+        switch (key) {
+          case "city":
+            if (element)
+              conditions.where.city = element;
+            break;
+
+          case "state":
+            if (element)
+              conditions.where.state = element;
+            break;
+
+          case "specialty":
+            if (element)
+              conditions.where.prof_specialty1 = element;
+            break;
+
+          case "insurance":
+            if (element)
+              conditions.where.prof_insurance1 = element;
+            break;
+
+          case "language":
+            if (element)
+              conditions.where.prof_language1 = element;
+            break;
+
+          case "gender":
+            if (element)
+              conditions.where.prof_gender = element;
+            break;
+
+          case "years":
+            if (element)
+              conditions.where.prof_years = element;
+            break;
+
+          default:
+            break;
+        }
+      }
+    }
+    console.log(conditions);
+    db.Professional.findAll(conditions).then(function (profData) {
+      const hbsObject = {
+        professionals: profData
+      };
+      res.render("index", hbsObject);
+    });
+  });
 
   app.get("/api/create-seeds", function (req, res) {
     db.Professional.create({
@@ -298,14 +365,4 @@ module.exports = function (app) {
       res.redirect("/api/professionals");
     });
   });
-
-  app.get("/api/professionals", function (req, res) {
-    db.Professional.findAll({}).then(function (profData) {
-      const hbsObject = {
-        professionals: profData
-      };
-      res.render("index", hbsObject);
-    });
-  });
-
 }
