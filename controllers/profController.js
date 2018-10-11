@@ -7,6 +7,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/prof/login", function (req, res) {
+    console.log("Going to Login...");
     res.render("login");
   });
 
@@ -42,27 +43,6 @@ module.exports = function (app) {
           // language3: req.body.language3,
           // prof_email: req.body.prof_email,
           // prof_phone: req.body.phone
-          prof_first_name: "John",
-          prof_last_name: "Smith",
-          prof_title: "Psychiatrist",
-          prof_specialty1: "Narcissism",
-          prof_specialty2: "Mental instability",
-          prof_specialty3: "Family counselling",
-          prof_phone: "2025551234",
-          prof_email: "john@johnsmith.com",
-          prof_street: "1600 Pennsylvania Ave NW",
-          prof_city: "Washington",
-          prof_state: "DC",
-          prof_zip: 20500,
-          prof_gender: "Male",
-          prof_years: 20,
-          prof_insurance1: "BlueCross",
-          prof_insurance2: "Cigna",
-          prof_insurance3: "Aetna",
-          prof_language1: "English",
-          prof_language2: "Spanish",
-          prof_language3: "French",
-          prof_photo: "https://randomuser.me/api/portraits/women/55.jpg"
         }).then(function () {
           res.redirect(307, "/api/prof/login");
         }).catch(function (err) {
@@ -70,7 +50,6 @@ module.exports = function (app) {
           res.json(err);
         });
       })
-    })
 
   app.get("/api/create-seeds", function (req, res) {
     db.Professional.create({
