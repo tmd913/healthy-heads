@@ -31,7 +31,7 @@ app.use(passport.session());
 // require ("./controllers/ptController.js")(app);
 require("./controllers/profController.js")(app);
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

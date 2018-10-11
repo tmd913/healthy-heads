@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var signUpForm = $("form.signup");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
+    var emailInput = $("input.email-input");
+    var passwordInput = $("input.password-input");
 
     signUpForm.on("submit", function (event) {
         event.preventDefault();
@@ -22,10 +22,10 @@ $(document).ready(function () {
         $.post("/api/prof/signup", {
             email: email,
             password: password
-        })//.then(function (data) {
-        //     console.log(`after sign up data: ${data}`);
-        //     window.location.replace(data);
-        // }).catch(handleLoginErr);
+        }).then(function (data) {
+            console.log(`after sign up data: ${data}`);
+            window.location.replace(data);
+        }).catch(handleLoginErr);
     }
 
     function handleLoginErr(err) {
