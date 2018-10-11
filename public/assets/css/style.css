@@ -1,3 +1,24 @@
 #prof-search {
     width: 100%;
+
+body {
+    margin: 0 auto;
+}
+
+#githubLogo {
+    width: 50px;
+}
+
+#logo {
+    width: 100px;
+    margin-left: 40px;
+}
+
+#navTop {
+    height: 100px;
+    /* margin-bottom: 50px; */
+}
+
+#formContainer {
+    margin-top: 50px;
 }
