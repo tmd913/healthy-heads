@@ -23,8 +23,6 @@ $(document).ready(function () {
         $.post("/api/prof/login", {
             email: email,
             password: password
-        }).then(function (data) {
-            window.location.replace(data);
         }).catch(function (err) {
             console.log(err);
         });
