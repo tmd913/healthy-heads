@@ -50,6 +50,7 @@ module.exports = function (app) {
           res.json(err);
         });
       })
+    });
 
   app.get("/api/create-seeds", function (req, res) {
     db.Professional.create({

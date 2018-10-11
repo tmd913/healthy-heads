@@ -18,8 +18,6 @@ app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
-require("./controllers/professional-controller.js")(app);
-
 // Passport middlewares:
 app.use(session({ secret: " pineapple-express",
 resave:true, saveUnitialized: true}));
