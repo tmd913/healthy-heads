@@ -1,27 +1,149 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Sign Up Form</h2>
-            <form class="signup">
-                <div class="input-field">
-                    <label for="signup-email">Email</label>
-                    <input type="email" class="validate email-input" name="signup-email">
-                </div>
-                <div class="input-field">
-                    <label for="signup-password">Password</label>
-                    <input type="password" class="validate password-input" name="signup-password">
-                </div>
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>
-                    <span class="msg"></span>
-                </div>
-                <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
-            </form>
-            <br />
-            <p>Or log in
-                <a href="/login">here</a>
-            </p>
+  <nav>
+    <div class="nav-wrapper teal lighten-2">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="https://github.com/tmd913/project2"><img src="/assets/img/GitHub_Logo_White.png" id="githubLogo"></a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Sign Up Form</h2>
+
+                <form class="profSignup">
+                    <div class="input-field">
+                        <input id="prof_first_name" type="text" class="validate">
+                        <label for="prof_first_name">First Name</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_last_name" type="text" class="validate">
+                        <label for="prof_last_name">Last Name</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_title" type="text" class="validate">
+                        <label for="prof_title">Title</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_specialty1" type="text" class="validate">
+                        <label for="prof_specialty1">Specialty 1</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_specialty2" type="text" class="validate">
+                        <label for="prof_specialty2">Specialty 2</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_specialty3" type="text" class="validate">
+                        <label for="prof_specialty3">Specialty 3</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_phone" type="text" class="validate">
+                        <label for="prof_phone">Phone Number</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_email" type="text" class="validate">
+                        <label for="prof_email">Contact Email Address</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_street" type="text" class="validate">
+                        <label for="prof_street">Street Address</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_city" type="text" class="validate">
+                        <label for="prof_city">City</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_state" type="text" class="validate">
+                        <label for="prof_state">State</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_zip" type="text" class="validate">
+                        <label for="prof_zip">Zip Code</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_gender" type="text" class="validate">
+                        <label for="prof_gender">Gender</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_years" type="text" class="validate">
+                        <label for="prof_years">Years in Practice</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_insurance1" type="text" class="validate">
+                        <label for="prof_insurance1">Insurance Accepted 1 (Optional)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_insurance2" type="text" class="validate">
+                        <label for="prof_insurance2">Insurance Accepted 2 (Optional)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_insurance3" type="text" class="validate">
+                        <label for="prof_insurance3">Insurance Accepted 3 (Optional)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_language1" type="text" class="validate">
+                        <label for="prof_language1">Language 1</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_language2" type="text" class="validate">
+                        <label for="prof_language2">Language 2 (Optional)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_language3" type="text" class="validate">
+                        <label for="prof_language3">Language 3 (Optional)</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="prof_photo" type="text" class="validate">
+                        <label for="prof_photo">Profile Photo</label>
+                    </div>
+
+                    <br>
+
+                    <div class="input-field">
+                        <label for="signup-email">Login Email</label>
+                        <input type="email" class="validate email-input" name="signup-email">
+                    </div>
+                    <div class="input-field">
+                        <label for="signup-password">Login Password</label>
+                        <input type="password" class="validate password-input" name="signup-password">
+                    </div>
+
+                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="msg"></span>
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
+                </form>
+
+                <br />
+                <p>Or log in
+                    <a href="/login">here</a>
+                </p>
+            </div>
         </div>
     </div>
-</div>
+    {{!-- end container --}}
