@@ -46,9 +46,10 @@ button {
     margin-left: 40px;
 }
 
-#navTop {
+#navnav {
     height: 100px;
-    /* margin-bottom: 50px; */
+    margin-bottom: 50px;
+    /* background-color: #2196f3; */
 }
 
 #formContainer {
