@@ -20,13 +20,18 @@ h1 {
 }
 
 #search-header {
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
 #results-header {
     margin-top: 30px;
     margin-bottom: 0;
+}
+
+#signUpHeader {
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -42,18 +47,19 @@ button {
 }
 
 #logo {
-    width: 100px;
-    margin-left: 40px;
+    height: 60px;
+    margin-left: 170px;
+    margin-top: 2px;
 }
 
 #navnav {
     height: 100px;
     margin-bottom: 50px;
-    /* background-color: #2196f3; */
+    background-color: #2196f3;
 }
 
 #formContainer {
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .name-title, .specialties, .gender, .years, .languages, .insurance {
