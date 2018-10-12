@@ -20,14 +20,19 @@ $(document).ready(function () {
     });
 
     function signUpUser(email, password) {
-        $.post("/api/prof/signup", {
+        $.post("/prof/signup", {
             //Going into User Table:
             email: email,
             password: password,
            
         }).then(function(data) {
             console.log(data);
-            window.location.replace(data);
+            if (data=="/prof/signup"){
+            alert(`User already exists.`);
+            window.location.replace("/")}
+            else{
+            window.location.replace(data)
+            };
           }).catch(function(err) {
             console.log(err);
           });
