@@ -19,15 +19,15 @@ h1 {
     margin: 0 20px;
 }
 
-#search-header {
+/* #search-header {
     margin-top: 20px;
     margin-bottom: 10px;
-}
+} */
 
-#results-header {
+/* #results-header {
     margin-top: 30px;
     margin-bottom: 0;
-}
+} */
 
 button {
     font-family: 'Raleway', sans-serif;
@@ -48,13 +48,13 @@ button {
 
 #navnav {
     height: 100px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     /* background-color: #2196f3; */
 }
 
-#formContainer {
+/* #formContainer {
     margin-top: 50px;
-}
+} */
 
 .name-title, .specialties, .gender, .years, .languages, .insurance {
     margin: 0!important;
