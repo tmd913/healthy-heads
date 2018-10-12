@@ -4,31 +4,30 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 module.exports = function (app) {
-  app.get("/api/prof/signup", function (req, res) {
+  app.get("/prof/signup", function (req, res) {
     res.render("signup");
   });
 
-  app.get("/api/prof/login", function (req, res) {
+  app.get("/", function (req, res) {
     console.log("Going to Login...");
     res.render("login");
   });
 
-  app.post("/api/prof/login", passport.authenticate("local"),
+  app.post("/", passport.authenticate("local"),
     function (req, res) {
       res.json("/prof-finder")
     });
 
-  app.post("/api/prof/signup",
+  app.post("/prof/signup",
     function (req, res) {
       console.log("profController req.body:" + req.body);
       db.User.create({
         email: req.body.email,
         password: req.body.password
       }).then(function () {
-          res.json("/api/prof/login");
+          res.json("/");
         }).catch(function (err) {
-          console.log(err);
-          res.json(err);
+          res.json("/prof/signup");
         });
       })
 

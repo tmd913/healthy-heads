@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
     function loginUser(email, password) {
-        $.post("/api/prof/login", {
+        $.post("/", {
             email: email,
             password: password
         }).then(function(data) {
