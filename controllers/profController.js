@@ -510,7 +510,7 @@ module.exports = function (app) {
         prof_language3: "French",
         prof_photo: "https://randomuser.me/api/portraits/women/44.jpg"
       });
-      res.redirect("/api/professionals");
+      res.redirect("/prof-finder");
     });
   });
 }
