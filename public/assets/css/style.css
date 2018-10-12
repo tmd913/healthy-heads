@@ -2,7 +2,7 @@
 body {
     margin: 0 auto;
     font-family: 'Raleway', sans-serif;
-    background-image: url("../images/dust_scratches.png");
+    background-image: url("../img/dust_scratches.png");
 }
 
 h1 {
@@ -55,6 +55,14 @@ button {
     box-shadow: 0 1px 0 0 #2196f3!important;
 }
 
+.splashLogo {
+    height: 400px;
+    display: block;
+}
+
+#splashText {
+    padding-left: 10px;
+}
 /* end global */
 
 
