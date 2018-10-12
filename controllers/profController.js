@@ -58,7 +58,121 @@ module.exports = function (app) {
       })
     });
 
-  app.get("/api/professionals", function (req, res) {
+  app.get("/api/specialties", function (req, res) {
+    let specialties = {};
+    db.Professional.findAll(
+      { 
+        attributes: ['prof_specialty1'],
+        group: ['prof_specialty1']
+      }).then(function (data) {
+      data.forEach(element => {
+        if (element.dataValues.prof_specialty1) {
+          specialties[element.dataValues.prof_specialty1] = null;
+        }
+      });
+      db.Professional.findAll(
+        { 
+          attributes: ['prof_specialty2'],
+          group: ['prof_specialty2']
+        }).then(function (data) {
+        data.forEach(element => {
+          if (element.dataValues.prof_specialty2) {
+            specialties[element.dataValues.prof_specialty2] = null;
+          }
+        });
+        db.Professional.findAll(
+          { 
+            attributes: ['prof_specialty3'],
+            group: ['prof_specialty3']
+          }).then(function (data) {
+          data.forEach(element => {
+            if (element.dataValues.prof_specialty3) {
+              specialties[element.dataValues.prof_specialty3] = null;
+            }
+          });
+          res.json(specialties);
+        });
+      });
+    });
+  });
+
+  app.get("/api/insurances", function (req, res) {
+    let insurances = {};
+    db.Professional.findAll(
+      { 
+        attributes: ['prof_insurance1'],
+        group: ['prof_insurance1']
+      }).then(function (data) {
+      data.forEach(element => {
+        if (element.dataValues.prof_insurance1) {
+          insurances[element.dataValues.prof_insurance1] = null;
+        }
+      });
+      db.Professional.findAll(
+        { 
+          attributes: ['prof_insurance2'],
+          group: ['prof_insurance2']
+        }).then(function (data) {
+        data.forEach(element => {
+          if (element.dataValues.prof_insurance2) {
+            insurances[element.dataValues.prof_insurance2] = null;
+          }
+        });
+        db.Professional.findAll(
+          { 
+            attributes: ['prof_insurance3'],
+            group: ['prof_insurance3']
+          }).then(function (data) {
+          data.forEach(element => {
+            if (element.dataValues.prof_insurance3) {
+              insurances[element.dataValues.prof_insurance3] = null;
+            }
+          });
+          res.json(insurances);
+        });
+      });
+    });
+  });
+
+  app.get("/api/languages", function (req, res) {
+    let languages = {};
+    db.Professional.findAll(
+      { 
+        attributes: ['prof_language1'],
+        group: ['prof_language1']
+      }).then(function (data) {
+      data.forEach(element => {
+        if (element.dataValues.prof_language1) {
+          languages[element.dataValues.prof_language1] = null;
+        }
+      });
+      db.Professional.findAll(
+        { 
+          attributes: ['prof_language2'],
+          group: ['prof_language2']
+        }).then(function (data) {
+        data.forEach(element => {
+          if (element.dataValues.prof_language2) {
+            languages[element.dataValues.prof_language2] = null;
+          }
+        });
+        db.Professional.findAll(
+          { 
+            attributes: ['prof_language3'],
+            group: ['prof_language3']
+          }).then(function (data) {
+          data.forEach(element => {
+            if (element.dataValues.prof_language3) {
+              languages[element.dataValues.prof_language3] = null;
+            }
+          });
+          res.json(languages);
+        });
+      });
+    });
+  });
+
+  app.get("/", function (req, res) {
     db.Professional.findAll({}).then(function (profData) {
       const hbsObject = {
         professionals: profData
@@ -67,61 +181,121 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/professionals/&city=:city?/&state=:state?/&specialty=:specialty?/&insurance=:insurance?/&gender=:gender?/&years=:years?", function (req, res) {
-    console.log(`Req params: ${req.params}`);
-    let conditions = { where: {} };
-    for (const key in req.params) {
-      if (req.params.hasOwnProperty(key)) {
-        const element = req.params[key];
-        switch (key) {
-          case "city":
-            if (element)
-              conditions.where.city = element;
-            break;
+  app.get(`/api/professionals/city=:city?/state=:state?/specialty=:specialty?/insurance=:insurance?/language=:language?/gender=:gender?/years=:years?`,
+    function (req, res) {
+      console.log(`Req params: ${req.params}`);
+      let conditions = { where: {} };
+      for (const key in req.params) {
+        if (req.params.hasOwnProperty(key)) {
+          const element = req.params[key];
+          switch (key) {
+            case "city":
+              if (element)
+                conditions.where.prof_city = element;
+              break;
 
-          case "state":
-            if (element)
-              conditions.where.state = element;
-            break;
+            case "state":
+              if (element)
+                conditions.where.prof_state = element;
+              break;
 
-          case "specialty":
-            if (element)
-              conditions.where.prof_specialty1 = element;
-            break;
+            case "specialty":
+              if (element) {
+                if (!conditions.where[Op.and]) {
+                  conditions.where[Op.and] = [];
+                }
+                conditions.where[Op.and].push({
+                  [Op.or]: {
+                    prof_specialty1: element,
+                    prof_specialty2: element,
+                    prof_specialty3: element
+                  }
+                });
+              }
+              break;
 
-          case "insurance":
-            if (element)
-              conditions.where.prof_insurance1 = element;
-            break;
+            case "insurance":
+              if (element) {
+                if (!conditions.where[Op.and]) {
+                  conditions.where[Op.and] = [];
+                }
+                conditions.where[Op.and].push({
+                  [Op.or]: {
+                    prof_insurance1: element,
+                    prof_insurance2: element,
+                    prof_insurance3: element
+                  }
+                });
+              }
+              break;
 
-          case "language":
-            if (element)
-              conditions.where.prof_language1 = element;
-            break;
+            case "language":
+              if (element) {
+                if (!conditions.where[Op.and]) {
+                  conditions.where[Op.and] = [];
+                }
+                conditions.where[Op.and].push({
+                  [Op.or]: {
+                    prof_language1: element,
+                    prof_language2: element,
+                    prof_language3: element
+                  }
+                });
+              }
+              break;
 
-          case "gender":
-            if (element)
-              conditions.where.prof_gender = element;
-            break;
+            case "gender":
+              if (element)
+                conditions.where.prof_gender = element;
+              break;
 
-          case "years":
-            if (element)
-              conditions.where.prof_years = element;
-            break;
+            case "years":
+              if (element) {
+                switch (element) {
+                  case "Less than 5":
+                    conditions.where.prof_years = { [Op.lt]: 5 };
+                    break;
 
-          default:
-            break;
+                  case "5-15":
+                    conditions.where.prof_years = { [Op.between]: [5, 15] };
+                    break;
+
+                  case "16-25":
+                    conditions.where.prof_years = { [Op.between]: [16, 25] };
+                    break;
+
+                  case "More than 25":
+                    conditions.where.prof_years = { [Op.gt]: 25 };
+                    break;
+
+                  default:
+                    break;
+                }
+              }
+              break;
+
+            default:
+              break;
+          }
         }
       }
-    }
-    console.log(conditions);
-    db.Professional.findAll(conditions).then(function (profData) {
-      const hbsObject = {
-        professionals: profData
-      };
-      res.render("index", hbsObject);
+      // console.log(conditions);
+      db.Professional.findAll(conditions).then(function (profData) {
+        // console.log(profData);
+        const hbsObject = {
+          professionals: profData,
+          city: req.params.city,
+          state: req.params.state,
+          specialty: req.params.specialty,
+          insurance: req.params.insurance,
+          language: req.params.language,
+          gender: req.params.gender,
+          years: req.params.years
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+      });
     });
-  });
 
   app.get("/api/create-seeds", function (req, res) {
     db.Professional.create({
@@ -177,7 +351,7 @@ module.exports = function (app) {
         prof_title: "Social Worker",
         prof_specialty1: "Family counselling",
         prof_specialty2: "Post-partum depression",
-        prof_specialty3: " ",
+        prof_specialty3: "",
         prof_phone: "2025554567",
         prof_email: "duane@duanemoreno.com",
         prof_street: "1600 21st St NW",
@@ -188,11 +362,11 @@ module.exports = function (app) {
         prof_years: 5,
         prof_insurance1: "BlueCross",
         prof_insurance2: "Kaiser Permanente",
-        prof_insurance3: " ",
+        prof_insurance3: "",
         prof_language1: "English",
         prof_language2: "Swedish",
-        prof_language3: " ",
-        prof_photo: "https://randomuser.me/api/portraits/men/20.jpg"
+        prof_language3: "",
+        prof_photo: "https://randomuser.me/api/portraits/men/7.jpg"
       });
     }).then(function () {
       db.Professional.create({
@@ -236,10 +410,10 @@ module.exports = function (app) {
         prof_years: 15,
         prof_insurance1: "Medicare",
         prof_insurance2: "Kaiser Permanente",
-        prof_insurance3: " ",
+        prof_insurance3: "",
         prof_language1: "English",
         prof_language2: "Swedish",
-        prof_language3: " ",
+        prof_language3: "",
         prof_photo: "https://randomuser.me/api/portraits/women/0.jpg"
       });
     }).then(function () {
@@ -263,7 +437,7 @@ module.exports = function (app) {
         prof_insurance3: "BlueCross",
         prof_language1: "English",
         prof_language2: "Swedish",
-        prof_language3: " ",
+        prof_language3: "",
         prof_photo: "https://randomuser.me/api/portraits/men/20.jpg"
       });
     }).then(function () {
@@ -286,8 +460,8 @@ module.exports = function (app) {
         prof_insurance2: "Medicaid",
         prof_insurance3: "Aetna",
         prof_language1: "English",
-        prof_language2: " ",
-        prof_language3: " ",
+        prof_language2: "",
+        prof_language3: "",
         prof_photo: "https://randomuser.me/api/portraits/men/12.jpg"
       });
     }).then(function () {
@@ -296,8 +470,8 @@ module.exports = function (app) {
         prof_last_name: "Dean",
         prof_title: "Social Worker",
         prof_specialty1: "Family counselling",
-        prof_specialty2: " ",
-        prof_specialty3: " ",
+        prof_specialty2: "",
+        prof_specialty3: "",
         prof_phone: "2025559210",
         prof_email: "dustin@dustindean.com",
         prof_street: "800 Ingraham St NW",
@@ -311,7 +485,7 @@ module.exports = function (app) {
         prof_insurance3: "Aetna",
         prof_language1: "English",
         prof_language2: "Japanese",
-        prof_language3: " ",
+        prof_language3: "",
         prof_photo: "https://randomuser.me/api/portraits/men/67.jpg"
       });
     }).then(function () {
@@ -321,7 +495,7 @@ module.exports = function (app) {
         prof_title: "Psychiatrist",
         prof_specialty1: "Attention-deficit hyperactivity disorder",
         prof_specialty2: "Bipolar disorder",
-        prof_specialty3: " ",
+        prof_specialty3: "",
         prof_phone: "2025553622",
         prof_email: "theodore@theodorewebb.com",
         prof_street: "2301 Foxhall Rd NW",
