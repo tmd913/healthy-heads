@@ -1,8 +1,40 @@
 #prof-search {
     width: 100%;
+    margin-top: 0;
+}
 
 body {
     margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+    background-image: url("../images/dust_scratches.png");
+}
+
+h1 {
+    font-size: 40px;
+    color: #2196f3;
+    font-weight: 500;
+}
+
+.container-nav {
+    margin: 0 20px;
+}
+
+#search-header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#results-header {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+button {
+    font-family: 'Raleway', sans-serif;
+}
+
+.input-field > label {
+    color: rgba(0,0,0,0.87)!important;
 }
 
 #githubLogo {
@@ -21,4 +53,67 @@ body {
 
 #formContainer {
     margin-top: 50px;
+}
+
+.name-title, .specialties, .gender, .years, .languages, .insurance {
+    margin: 0!important;
+}
+
+.practice-info > p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14.5px;
+}
+
+.practice-info {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.city, .state, .zip {
+    display: inline-block;
+    margin: 0!important;
+}
+
+.street {
+    margin-top: 10px!important;
+}
+
+.result-item {
+    margin: 10px 0;
+    padding: 20px 10px;
+    background-color: #e3f2fd;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.prof-pic {
+    margin-top: 8px;
+    border-radius: 5px;
+}
+
+.row {
+    margin: 0;
+}
+
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+    color: #2196f3!important;
+}
+/* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #2196f3!important;
+    box-shadow: 0 1px 0 0 #2196f3!important;
+  }
+
+.dropdown-content li > span {
+    color: #2196f3!important;
+}
+
+.name-title {
+    font-size: 22px;
+}
+
+#clear {
+    margin-top: 20px;
 }

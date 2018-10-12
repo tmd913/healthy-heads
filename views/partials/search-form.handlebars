@@ -1,0 +1,47 @@
+<form id="search-form" class="col s12">
+    <div class="row">
+        <div class="input-field col s3">
+            <input id="city-input" type="text" class="autocomplete" autocomplete="off" value="{{city}}">
+            <label for="city-input">City</label>
+        </div>
+        <div class="input-field col s1">
+            <input id="state-input" type="text" class="autocomplete" autocomplete="off" value="{{state}}">
+            <label for="state-input">State</label>
+        </div>
+        <div class="input-field col s4">
+            <input type="text" id="specialty-input" class="autocomplete" autocomplete="off" value="{{specialty}}">
+            <label for="specialty-input">Specialty</label>
+        </div>
+        <div class="input-field col s4">
+            <input id="insurance-input" type="text" class="autocomplete" autocomplete="off" value="{{insurance}}">
+            <label for="insurance-input">Insurance Accepted</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <input id="language-input" type="text" class="autocomplete" autocomplete="off" value="{{language}}">
+            <label for="language-input">Language</label>
+        </div>
+        <div class="input-field col s4">
+            <select id="gender-input">
+                <option value="" disabled selected></option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Genderneutral</option>
+            </select>
+            <label>Gender</label>
+        </div>
+        <div class="input-field col s4">
+            <select id="years-input">
+                <option value="" disabled selected></option>
+                <option value="1">Less than 5</option>
+                <option value="2">5-15</option>
+                <option value="3">16-25</option>
+                <option value="4">More than 25</option>
+            </select>
+            <label>Years in Practice</label>
+        </div>
+    </div>
+    <button id="prof-search" class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Search</button>
+    <button id="clear" class="btn waves-effect waves-light blue lighten-2">Clear Search Form</button>
+</form>

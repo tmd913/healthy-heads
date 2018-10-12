@@ -1,58 +1,30 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue lighten-2">
+            <div class="container-nav">
+                <a href="/" class="brand-logo">Healthy Heads</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="https://github.com/tmd913/project2" target="_blank">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
 <div class="container">
     <div id="search-container">
         <div class="row">
-            <h1>Search</h1>
-            <form id="search-form" class="col s12">
-                <div class="row">
-                    <div class="input-field col s3">
-                        <input id="city-input" type="text">
-                        <label for="city-input">City</label>
-                    </div>
-                    <div class="input-field col s1">
-                        <input id="state-input" type="text">
-                        <label for="state-input">State</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <input type="text" id="specialty-input" class="autocomplete">
-                        <label for="specialty-input">Specialty</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <input id="insurance-input" type="text" class="autocomplete">
-                        <label for="insurance-input">Insurance Accepted</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input id="language-input" type="text" class="autocomplete">
-                        <label for="language-input">Language</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <select id="gender-input">
-                            <option value="" disabled selected></option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="3">Genderneutral</option>
-                        </select>
-                        <label>Gender</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <select id="years-input">
-                            <option value="" disabled selected></option>
-                            <option value="1">Less than 5</option>
-                            <option value="2">5 - 10</option>
-                            <option value="3">10 - 15</option>
-                            <option value="4">More than 15</option>
-                        </select>
-                        <label>Years in Practice</label>
-                    </div>
-                </div>
-                <button id="prof-search" class="btn waves-effect waves-light" type="submit" name="action">Search</button>
-            </form>
+            <h1 id="search-header">Search</h1>
+
+            {{> search-form}}
+
         </div>
     </div>
 
     <div id="results-container">
-        <h1>Results</h1>
+        <h1 id="results-header">Results</h1>
 
         <ul id="results-list">
             {{#each professionals}} {{> professionals/professional-block}} {{/each}}
