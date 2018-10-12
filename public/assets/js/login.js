@@ -23,9 +23,12 @@ $(document).ready(function () {
         $.post("/api/prof/login", {
             email: email,
             password: password
-        }).catch(function (err) {
+        }).then(function(data) {
+            console.log(data);
+            window.location.replace(data);
+          }).catch(function(err) {
             console.log(err);
-        });
+          });
     }
 
 });
