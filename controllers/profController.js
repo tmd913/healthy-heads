@@ -15,7 +15,7 @@ module.exports = function (app) {
 
   app.post("/api/prof/login", passport.authenticate("local"),
     function (req, res) {
-      res.json("/api/professionals")
+      res.json("/prof-finder")
     });
 
   app.post("/api/prof/signup",
@@ -146,7 +146,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/", function (req, res) {
+  app.get("/prof-finder", function (req, res) {
     db.Professional.findAll({}).then(function (profData) {
       const hbsObject = {
         professionals: profData
@@ -510,7 +510,7 @@ module.exports = function (app) {
         prof_language3: "French",
         prof_photo: "https://randomuser.me/api/portraits/women/44.jpg"
       });
-      res.redirect("/api/professionals");
+      res.redirect("/prof-finder");
     });
   });
 }
