@@ -1,6 +1,6 @@
 #prof-search {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 body {
@@ -112,4 +112,8 @@ button {
 
 .name-title {
     font-size: 22px;
+}
+
+#clear {
+    margin-top: 20px;
 }
