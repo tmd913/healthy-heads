@@ -11,39 +11,38 @@ $(document).ready(function () {
         var userData = {
             email: emailInput.val().trim(),
             password: passwordInput.val().trim(),
-            confirmPassword: confirmPasswordInput.val()
-            
+            confirmPassword: confirmPasswordInput.val().trim()
+
         };
-
-
-
-        if (!userData.email || !userData.password) {
+        if (!userData.email || !userData.password || !userData.confirmPassword) {
             return;
         }
-        signUpUser(userData.email, userData.password, userData.confirmPassword);
-        emailInput.val("");
-        passwordInput.val("");
-        confirmPasswordInput.val("");
+        else if (userData.password.indexOf(userData.confirmPassword) > -1) {
+            signUpUser(userData.email, userData.password);
+        } else {
+            alert("Password Mismatch");
+        }
+
+
     });
 
-    function signUpUser(email, password, confirmPassword) {
+    function signUpUser(email, password) {
         $.post("/prof/signup", {
             //Going into User Table:
             email: email,
             password: password,
-            confirmPassword: confirmPassword
-           
-        }).then(function(data) {
+
+        }).then(function (data) {
             console.log(data);
-            if (data == "/prof/signup"){
-            alert(`User already exists or Password Mismatch.`);
-            window.location.replace("/prof/signup")}
-            else{
-            window.location.replace(data)
+            if (data == "/prof/signup") {
+                alert(`User already exists.`);
+                window.location.replace("/")
+            } else {
+                window.location.replace(data)
             };
-          }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
-          });
+        });
     }
 
     function handleLoginErr(err) {

@@ -2,6 +2,7 @@
 var passport = require("../config/passport");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
   app.get("/prof/signup", function (req, res) {
@@ -14,42 +15,35 @@ module.exports = function (app) {
   });
 
   app.get("/logout", function(req, res) {
+    console.log("Loggin Out...");
     req.logout();
     res.redirect("/");
   });
 
   app.post("/", passport.authenticate("local"),
     function (req, res) {
+
+       // console.log(res.message);
       res.json("/prof-finder")
     });
 
-  app.post("/prof/signup",
+
+    app.post("/prof/signup",
     function (req, res) {
       console.log("profController req.body:" + req.body);
-      if (req.body.confirmPassword === req.body.password){
-        createNewUser()
-      } else 
-      { 
-        console.log("Password Mismatch");
-        res.json("/prof/signup");
-      }
-      });
-  
-    function createNewUser(){
       db.User.create({
         email: req.body.email,
         password: req.body.password
       }).then(function () {
-
-        res.json("/");
-      }).catch(function (err) {
-        res.json("/prof/signup");
-      });
-    }
+          res.json("/");
+        }).catch(function (err) {
+          res.json("/prof/signup");
+        });
+      })
 
     
 
-  app.get("/api/specialties", function (req, res) {
+  app.get("/api/specialties", isAuthenticated ,function (req, res) {
     let specialties = {};
     db.Professional.findAll(
       {
@@ -87,7 +81,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/insurances", function (req, res) {
+  app.get("/api/insurances", isAuthenticated, function (req, res) {
     let insurances = {};
     db.Professional.findAll(
       {
@@ -125,7 +119,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/languages", function (req, res) {
+  app.get("/api/languages", isAuthenticated, function (req, res) {
     let languages = {};
     db.Professional.findAll(
       {
@@ -163,7 +157,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/prof-finder", function (req, res) {
+  app.get("/prof-finder", isAuthenticated, function (req, res) {
     db.Professional.findAll({}).then(function (profData) {
       const hbsObject = {
         professionals: profData
@@ -185,7 +179,8 @@ module.exports = function (app) {
     });
   });
 
-app.get(`/api/professionals/city=:city?/state=:state?/specialty=:specialty?/insurance=:insurance?/language=:language?/gender=:gender?/years=:years?`,
+  //Serach Functionality Logic:
+app.get(`/api/professionals/city=:city?/state=:state?/specialty=:specialty?/insurance=:insurance?/language=:language?/gender=:gender?/years=:years?`, isAuthenticated,
   function (req, res) {
     console.log(`Req params: ${req.params}`);
     let conditions = { where: {} };
@@ -301,7 +296,8 @@ app.get(`/api/professionals/city=:city?/state=:state?/specialty=:specialty?/insu
     });
   });
 
-app.get("/api/create-seeds", function (req, res) {
+  //Test Data for testing Functionality:
+app.get("/api/create-seeds", isAuthenticated, function (req, res) {
   db.Professional.create({
     prof_first_name: "John",
     prof_last_name: "Smith",
