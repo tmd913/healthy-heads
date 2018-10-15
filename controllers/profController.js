@@ -23,29 +23,35 @@ module.exports = function (app) {
       res.json("/prof-finder")
     });
 
-  app.post("/prof/signup",
+  // app.post("/prof/signup",
+  //   function (req, res) {
+  //     console.log("profController req.body:" + req.body);
+  //    createNewUser();
+  //     });
+  
+    // function createNewUser(){
+    //   db.User.create({
+    //     email: req.body.email,
+    //     password: req.body.password
+    //   }).then(function () {
+
+    //     res.json("/");
+    //   }).catch(function (err) {
+    //     res.json("/prof/signup");
+    //   });
+    // }
+    app.post("/prof/signup",
     function (req, res) {
       console.log("profController req.body:" + req.body);
-      if (req.body.confirmPassword === req.body.password){
-        createNewUser()
-      } else 
-      { 
-        console.log("Password Mismatch");
-        res.json("/prof/signup");
-      }
-      });
-  
-    function createNewUser(){
       db.User.create({
         email: req.body.email,
         password: req.body.password
       }).then(function () {
-
-        res.json("/");
-      }).catch(function (err) {
-        res.json("/prof/signup");
-      });
-    }
+          res.json("/");
+        }).catch(function (err) {
+          res.json("/prof/signup");
+        });
+      })
 
     
 
