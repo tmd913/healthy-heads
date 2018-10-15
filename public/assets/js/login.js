@@ -27,7 +27,7 @@ $(document).ready(function () {
             console.log(data);
             window.location.replace(data);
           }).catch(function(err) {
-            console.log(err);
+              alert ("Invalid Password or User does not exists");
           });
     }
 
