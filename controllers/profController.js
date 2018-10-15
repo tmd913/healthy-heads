@@ -26,6 +26,16 @@ module.exports = function (app) {
   app.post("/prof/signup",
     function (req, res) {
       console.log("profController req.body:" + req.body);
+      if (req.body.confirmPassword === req.body.password){
+        createNewUser()
+      } else 
+      { 
+        console.log("Password Mismatch");
+        res.json("/prof/signup");
+      }
+      });
+  
+    function createNewUser(){
       db.User.create({
         email: req.body.email,
         password: req.body.password
@@ -34,7 +44,8 @@ module.exports = function (app) {
         }).catch(function (err) {
           res.json("/prof/signup");
         });
-      })
+    }
+    
 
   app.get("/api/specialties", function (req, res) {
     let specialties = {};
