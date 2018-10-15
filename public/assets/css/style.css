@@ -13,6 +13,27 @@ h1 {
     margin-bottom: 10px;
 }
 
+.collapsible-body {
+    padding-bottom: 0;
+    border: none;
+}
+
+.collapsible-body > ul > li > h2 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.collapsible-body > ul > li > p {
+    margin: 0;
+}
+
+.collapsible-body > ul > li {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
 button {
     font-family: 'Raleway', sans-serif;
 }
@@ -23,7 +44,7 @@ button {
 
 #logo {
     height: 60px;
-    margin-left: 170px;
+    margin-left: 0;
     margin-top: 2px;
 }
 
@@ -43,12 +64,14 @@ button {
 
 /* label focus color */
 .input-field input[type=text]:focus + label,
+.input-field textarea:focus + label,
 .input-field input[type=email]:focus + label,
 .input-field input[type=password]:focus + label {
     color: #2196f3!important;
 }
 /* label underline focus color */
 .input-field input[type=text]:focus,
+.input-field textarea:focus,
 .input-field input[type=email]:focus,
 .input-field input[type=password]:focus {
     border-bottom: 1px solid #2196f3!important;
@@ -139,3 +162,50 @@ button {
     margin-top: 20px;
 }
 /* end search form */
+
+.collapsible {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.collapsible-header {
+    background: none;
+    display: inline-block;
+    padding: 0;
+    border-bottom: none;
+}
+
+#review-row {
+    border-bottom: 1px solid #ddd;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+
+#reviews {
+    font-size: 14.5px;
+}
+
+#main-info {
+    padding-left: 0;
+}
+
+.display-none {
+    display: none;
+}
+
+#submit-review {
+    margin-bottom: 20px;
+}
+
+#reviews-ul {
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 80%;
+    }
+}
+
