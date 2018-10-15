@@ -1,6 +1,22 @@
 $(document).ready(function () {
     const searchForm = $("#search-form");
     const clear = $("#clear");
+    const cityInput = $("#city-input");
+    const stateInput = $("#state-input");
+    const specialtyInput = $("#specialty-input");
+    const insuranceInput = $("#insurance-input");
+    const languageInput = $("#language-input");
+    const genderInput = $("#gender-input");
+    const yearsInput = $("#years-input");
+    const submitReview = $(".submit-review");
+    const addReviewButton = $(".add-review");
+    const reviewForm = $(".review-form");
+
+    $('.collapsible').collapsible();
+
+    $(".reviews").on("click", function () {
+        $(".collapsible-header").addClass("active");
+    })
 
     getSpecialties();
     getInsurances();
@@ -72,14 +88,8 @@ $(document).ready(function () {
 
     clear.on("click", clearSearch);
     searchForm.on("submit", handleSearch);
-
-    const cityInput = $("#city-input");
-    const stateInput = $("#state-input");
-    const specialtyInput = $("#specialty-input");
-    const insuranceInput = $("#insurance-input");
-    const languageInput = $("#language-input");
-    const genderInput = $("#gender-input");
-    const yearsInput = $("#years-input");
+    submitReview.on("click", handleReview);
+    addReviewButton.on("click", showReviewForm);
 
     function clearSearch(event) {
         event.preventDefault();
@@ -101,11 +111,7 @@ $(document).ready(function () {
         const languageInputVal = languageInput.val().trim();
         const genderInputVal = genderInput.find(":selected").text();
         const yearsInputVal = yearsInput.find(":selected").text();
-        // Wont submit the post if we are missing a body, title, or author
-        // if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
-        //     return;
-        // }
-        // Constructing a newPost object to hand to the database
+
         var newSearch = {
             city: cityInputVal,
             state: stateInputVal,
@@ -124,6 +130,41 @@ $(document).ready(function () {
         console.log(query);
         $.get(query, function () {
             window.location.href = query;
+        });
+    }
+
+    function showReviewForm(event) {
+        event.preventDefault();
+
+        const reviewFormActive = $(".active > .row > .review-form");
+        reviewFormActive.removeClass("display-none");
+    }
+
+    function handleReview(event) {
+        event.preventDefault();
+        reviewForm.addClass("display-none");
+        const profID = $(".active").data("profID");
+        const firstNameActive = $(".active > .row > .review-form > form > .row > .input-field > .first-name-input").val().trim();
+        const lastNameActive = $(".active > .row > .review-form > form > .row > .input-field > .last-name-input").val().trim();
+        const ratingActive = $(".active > .row > .review-form > form > .row > .input-field > .rating-input").val().trim();
+        const reviewActive = $(".active > .row > .review-form > form > .row > .input-field > .review-input").val().trim();
+        console.log(profID);
+
+        var newReview = {
+            firstName: firstNameActive,
+            lastName: lastNameActive,
+            rating: ratingActive,
+            review: reviewActive,
+            profID: profID
+        };
+        console.log(newReview);
+        addReview(newReview);
+    }
+
+    function addReview(newReview) {
+        $.post("/api/add-review", newReview, function () {
+            console.log(newReview);
+            window.location.reload;
         });
     }
 

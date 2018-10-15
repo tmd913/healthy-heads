@@ -1,9 +1,9 @@
-<li class="result-item">
+<li class="result-item" data-profID={{id}}>
     <div class="row">
         <div class="col s2">
             <img class="prof-pic" src="{{prof_photo}}" alt="Profile Picture">
         </div>
-        <div class="col s7">
+        <div id="main-info" class="col s7">
             <p class="name-title">
                 <span class="name">
                     {{prof_first_name}} {{prof_last_name}}
@@ -74,5 +74,60 @@
                 <p class="phone">{{prof_phone}}</p>
             </div>
         </div>
+    </div>
+    <div class="row" id="review-row">
+        <div class="collapsible-header">
+            <span>Rating: 4.5</span>
+            <span>-</span>
+            <a id="reviews">Read Reviews</a>
+        </div>
+    </div>
+    <div class="row collapsible-body">
+        <a class="add-review" href="">Add Review</a>
+        <div class="row display-none review-form">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s5">
+                        <input class="first-name-input" type="text">
+                        <label for="first-name-input">First Name</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input class="last-name-input" type="text">
+                        <label for="last-name-input">Last Name</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input class="rating-input" type="text">
+                        <label for="rating-input">Rating</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="review-input materialize-textarea"></textarea>
+                        <label for="review-input">Review Body</label>
+                    </div>
+                </div>
+                <button class="submit-review btn waves-effect waves-light blue lighten-2" type="submit" name="action">Submit</button>
+            </form>
+        </div>
+        <ul id="reviews-ul">
+            <li>
+                <h2>Bobby Bishop
+                    <span>-</span>
+                    <span> 5.0</span>
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe id velit officia facere adipisci ratione
+                    dolore rem dignissimos accusantium, dolorem, tenetur eum expedita hic exercitationem aut tempora fugiat,
+                    at vel!</p>
+            </li>
+            <li>
+                <h2>Janet Johnson
+                    <span>-</span>
+                    <span> 4.0</span>
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe id velit officia facere adipisci ratione
+                    dolore rem dignissimos accusantium, dolorem, tenetur eum expedita hic exercitationem aut tempora fugiat,
+                    at vel!</p>
+            </li>
+        </ul>
     </div>
 </li>
