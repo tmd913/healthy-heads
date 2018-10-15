@@ -1,4 +1,4 @@
-var db = require("../models");
+  var db = require("../models");
 var passport = require("../config/passport");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -11,6 +11,11 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     console.log("Going to Login...");
     res.render("login");
+  });
+
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
   });
 
   app.post("/", passport.authenticate("local"),
