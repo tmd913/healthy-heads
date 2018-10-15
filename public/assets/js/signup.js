@@ -27,7 +27,7 @@ $(document).ready(function () {
            
         }).then(function(data) {
             console.log(data);
-            if (data=="/prof/signup"){
+            if (data == "/prof/signup"){
             alert(`User already exists.`);
             window.location.replace("/")}
             else{
