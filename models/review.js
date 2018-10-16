@@ -21,8 +21,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         profID: {
             type: DataTypes.INTEGER,
-            allowNull: true,
-            defaultValue: 1
+            allowNull: false
         }
     });
 

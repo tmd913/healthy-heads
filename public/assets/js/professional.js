@@ -80,7 +80,10 @@ $(document).ready(function () {
 
     $('#city-input').autocomplete({
         data: {
-            "Washington": null
+            "Washington": null,
+            "Arlington": null,
+            "McLean": null,
+            "Fairfax": null
         }
     })
 
@@ -89,7 +92,7 @@ $(document).ready(function () {
     clear.on("click", clearSearch);
     searchForm.on("submit", handleSearch);
     submitReview.on("click", handleReview);
-    addReviewButton.on("click", showReviewForm);
+    addReviewButton.on("click", toggleReviewForm);
 
     function clearSearch(event) {
         event.preventDefault();
@@ -133,38 +136,43 @@ $(document).ready(function () {
         });
     }
 
-    function showReviewForm(event) {
+    function toggleReviewForm(event) {
         event.preventDefault();
 
         const reviewFormActive = $(".active > .row > .review-form");
-        reviewFormActive.removeClass("display-none");
+        reviewFormActive.toggleClass("display-none");
     }
 
     function handleReview(event) {
         event.preventDefault();
         reviewForm.addClass("display-none");
-        const profID = $(".active").data("profID");
-        const firstNameActive = $(".active > .row > .review-form > form > .row > .input-field > .first-name-input").val().trim();
-        const lastNameActive = $(".active > .row > .review-form > form > .row > .input-field > .last-name-input").val().trim();
-        const ratingActive = $(".active > .row > .review-form > form > .row > .input-field > .rating-input").val().trim();
-        const reviewActive = $(".active > .row > .review-form > form > .row > .input-field > .review-input").val().trim();
+        const profID = $(".result-item.active").data("profid");
+        console.log(profID);
+        const firstNameActive = $(".active > .row > .review-form > form > .row > .input-field > .first-name-input");
+        const lastNameActive = $(".active > .row > .review-form > form > .row > .input-field > .last-name-input");
+        const ratingActive = $(".active > .row > .review-form > form > .row > .input-field > .rating-input");
+        const reviewActive = $(".active > .row > .review-form > form > .row > .input-field > .review-input");
         console.log(profID);
 
         var newReview = {
-            firstName: firstNameActive,
-            lastName: lastNameActive,
-            rating: ratingActive,
-            review: reviewActive,
+            firstName: firstNameActive.val().trim(),
+            lastName: lastNameActive.val().trim(),
+            rating: ratingActive.val().trim(),
+            review: reviewActive.val().trim(),
             profID: profID
         };
         console.log(newReview);
+        firstNameActive.val("");
+        lastNameActive.val("");
+        ratingActive.val("");
+        reviewActive.val("");
         addReview(newReview);
     }
 
     function addReview(newReview) {
         $.post("/api/add-review", newReview, function () {
             console.log(newReview);
-            window.location.reload;
+            window.location.reload();
         });
     }
 

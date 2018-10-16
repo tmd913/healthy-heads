@@ -77,7 +77,7 @@
     </div>
     <div class="row" id="review-row">
         <div class="collapsible-header">
-            <span>Rating: 4.5</span>
+            <span>Rating: {{averageRating}}</span>
             <span>-</span>
             <a id="reviews">Read Reviews</a>
         </div>
@@ -110,7 +110,7 @@
             </form>
         </div>
         <ul id="reviews-ul">
-            <li>
+            {{!-- <li>
                 <h2>Bobby Bishop
                     <span>-</span>
                     <span> 5.0</span>
@@ -127,7 +127,18 @@
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe id velit officia facere adipisci ratione
                     dolore rem dignissimos accusantium, dolorem, tenetur eum expedita hic exercitationem aut tempora fugiat,
                     at vel!</p>
-            </li>
+            </li> --}}
+            {{!-- {{#each reviews}} {{> reviews/review-block}} {{/each}} --}}
+            {{#each reviews}} 
+                {{> reviews/review-block}}
+                {{!-- <li>
+                    <h2>{{reviewerFirstName}}
+                        <span>-</span>
+                        <span> {{rating}}</span>
+                    </h2>
+                    <p>{{reviewBody}}</p>
+                </li> --}}
+            {{/each}}
         </ul>
     </div>
 </li>

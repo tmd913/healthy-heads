@@ -1,8 +1,4 @@
 <div class="container">
-    <div class="right-align" id = "logout">
-        <a href = "/logout">Log Out</a>
-
-    </div>
     <div id="search-container">
         <div class="row">
             <h1 id="search-header">Search</h1>
@@ -18,5 +14,8 @@
         <ul id="results-list" class="collapsible">
             {{#each professionals}} {{> professionals/professional-block}} {{/each}}
         </ul>
+        {{!-- <ul id="reviews-list">
+            {{#each reviews}} {{> review-block}} {{/each}}
+        </ul> --}}
     </div>
 </div>
