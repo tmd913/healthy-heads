@@ -8,3 +8,5 @@ The project incorporates a login feature, and the ability to sign up. Once insid
 We used Node, Express, mySQL, Sequelize, Handlebars, Passport.js, and Materialize on this project.
 
 https://healthy-heads.herokuapp.com/
+
+![alt text](https://raw.githubusercontent.com/tmd913/project2/master/public/img/healthy-heads-screenshot.png?raw=true)
