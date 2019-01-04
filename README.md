@@ -9,4 +9,4 @@ We used Node, Express, mySQL, Sequelize, Handlebars, Passport.js, and Materializ
 
 https://healthy-heads.herokuapp.com/
 
-![alt text](https://github.com/tmd913/project2/blob/master/public/assets/img/healthy-heads-screenshot.png?raw=true)
+![screenshot](https://github.com/tmd913/project2/blob/master/public/assets/img/healthy-heads-screenshot.png?raw=true)
